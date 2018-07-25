@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MatheTrainer</string>
+    <string name="addieren">addieren</string>
+    <string name="geloesteAufgaben">Aufgaben gelöst</string>
+    <string name="aufgabe">Aufgabe</string>
+    <string name="hauptMenue">Hauptemenü</string>
+    <string name="versuche">Versuche</string>
+</resources>
