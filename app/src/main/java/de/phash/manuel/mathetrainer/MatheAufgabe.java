@@ -32,4 +32,5 @@ class MatheAufgabe {
     public void setRichtigeLoesung(Integer richtigeLoesung) {
         this.richtigeLoesung = richtigeLoesung;
     }
+
 }

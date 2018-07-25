@@ -1,8 +1,8 @@
 package de.phash.manuel.mathetrainer
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 
 class MainActivity : AppCompatActivity() {
@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     fun buttonClick(view: View) {
         val tag = view.tag
-        if (tag.toString().equals("add")){
-            val intent = Intent(this, EinfachesRechnen::class.java).apply {
-                putExtra(Konstanten.RECHENART, Konstanten.ADD);
-            }
-            startActivity(intent)
+
+        val intent = Intent(this, EinfachesRechnen::class.java).apply {
+            putExtra(Konstanten.RECHENART, tag.toString())
         }
+        startActivity(intent)
+
     }
 }

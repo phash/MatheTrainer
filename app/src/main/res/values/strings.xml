@@ -5,4 +5,6 @@
     <string name="aufgabe">Aufgabe</string>
     <string name="hauptMenue">Hauptemenü</string>
     <string name="versuche">Versuche</string>
+    <string name="waehle">Wähle eine Aufgabenart</string>
+    <string name="subtrahieren">subtrahieren</string>
 </resources>
