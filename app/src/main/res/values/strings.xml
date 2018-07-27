@@ -11,4 +11,6 @@
     <string name="adderg">addieren plus</string>
     <string name="loesung">lösen</string>
     <string name="suberg">Substrahieren Plus</string>
+    <string name="klasse">In welche Klasse gehst du?</string>
+    <string name="biswieviel">Bis wieviel kannst du rechnen?</string>
 </resources>

@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <integer name="bisMax">20</integer>
+    <integer name="aufgaben">0</integer>
+    <integer name="versuche">0</integer>
+    <integer name="richtige">0</integer>
 </resources>

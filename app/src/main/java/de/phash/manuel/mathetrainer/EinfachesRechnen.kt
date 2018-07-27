@@ -1,5 +1,6 @@
 package de.phash.manuel.mathetrainer
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -9,10 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-
-import java.util.ArrayList
-import java.util.Locale
-import java.util.Objects
+import java.util.*
 
 class EinfachesRechnen : AppCompatActivity() {
 
@@ -39,13 +37,15 @@ class EinfachesRechnen : AppCompatActivity() {
         Log.i("button", gedrueckt.toString() + "")
 
         if (aktAufgabe!!.richtigeLoesung == gedrueckt) {
-            richtig++
-            aufgabe++
-            versuche++
+            increaseAllStates()
             Toast.makeText(this, "Richtig!", Toast.LENGTH_SHORT).show()
             updateViews()
         } else {
-            versuche++
+            val sharedPref = this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE)
+
+            var versuchPers = sharedPref.getInt("versuche", 0)
+            sharedPref.edit().putInt("versuche", versuchPers++).apply()
+            Status.instance.versuche++
             b.setBackgroundColor(Color.RED)
             updateVersuche()
             Toast.makeText(this, "leider falsch", Toast.LENGTH_SHORT).show()
@@ -53,19 +53,35 @@ class EinfachesRechnen : AppCompatActivity() {
         }
     }
 
+    private fun increaseAllStates() {
+        Status.instance.richtig++
+        Status.instance.versuche++
+        Status.instance.aufgabe++
+        val sharedPref = this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE)
+        var richtigPers = sharedPref.getInt("richtieg", 0)
+        sharedPref.edit().putInt("richtige", richtigPers++).apply()
+        var versuchPers = sharedPref.getInt("versuche", 0)
+        sharedPref.edit().putInt("versuche", versuchPers++).apply()
+
+        var aufgabePers = sharedPref.getInt("aufgaben", 0)
+        sharedPref.edit().putInt("aufgaben", aufgabePers++).apply()
+
+    }
     private fun updateVersuche() {
         val versucheView = findViewById(R.id.versucheView) as TextView
-        versucheView.setText(versuche.toString())
+        versucheView.text = Status.instance.versuche.toString()
     }
 
     private fun updateViews() {
         updateVersuche()
-        aktAufgabe = erzeugeMatheAufgabe()
+
+        aktAufgabe = erzeugeMatheAufgabe(Status.instance.bisMax)
+
         val aufgabeTextView = findViewById(R.id.aktuelleAufgabe) as TextView
         aufgabeTextView.text = aktAufgabe!!.aufgabe
 
         val geloesteAufgabenTextView = findViewById(R.id.geloesteAufgaben) as TextView
-        geloesteAufgabenTextView.text = String.format(Locale.GERMAN, "%d", richtig)
+        geloesteAufgabenTextView.text = String.format(Locale.GERMAN, "%d", Status.instance.richtig)
 
 
         var i = 0
@@ -76,10 +92,10 @@ class EinfachesRechnen : AppCompatActivity() {
         }
     }
 
-    private fun erzeugeMatheAufgabe(): MatheAufgabe? {
+    private fun erzeugeMatheAufgabe(bisMax: Int): MatheAufgabe? {
         if (rechenart == Konstanten.ADD)
-            return MatheAufgaben.getAddition(4, 20)
-        return if (rechenart == Konstanten.SUB) MatheAufgaben.getSubstraktion(4, 20) else null
+            return MatheAufgaben.getAddition(4, bisMax)
+        return if (rechenart == Konstanten.SUB) MatheAufgaben.getSubstraktion(4, bisMax) else null
     }
 
     fun hauptMenue(view: View) {
