@@ -46,15 +46,17 @@ public class MatheAufgaben {
             subtrahend = RandomUtils.nextInt(0, bisMax);
             Log.i("sub", "minuend: " + minuend + " subtrahend: " + subtrahend);
         } while (minuend + subtrahend >= bisMax || minuend < subtrahend);
-
         aufgabe.setRichtigeLoesung(minuend - subtrahend);
-        loesungsSet.add(minuend - subtrahend);
-        do {
-            loesungsSet.add(RandomUtils.nextInt(0, bisMax));
+        if (loesungen > 1) {
 
-        } while (loesungsSet.size() < loesungen);
-        aufgabe.setAufgabe(String.format(Locale.GERMAN, "%d - %d", minuend, subtrahend));
-        aufgabe.setLoesungen(loesungsSet);
+            loesungsSet.add(minuend - subtrahend);
+            do {
+                loesungsSet.add(RandomUtils.nextInt(0, bisMax));
+
+            } while (loesungsSet.size() < loesungen);
+            aufgabe.setAufgabe(String.format(Locale.GERMAN, "%d - %d", minuend, subtrahend));
+            aufgabe.setLoesungen(loesungsSet);
+        }
 
         return aufgabe;
     }

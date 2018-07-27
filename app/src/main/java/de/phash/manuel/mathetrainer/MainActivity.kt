@@ -14,11 +14,17 @@ class MainActivity : AppCompatActivity() {
 
     fun buttonClick(view: View) {
         val tag = view.tag
-
-        val intent = Intent(this, EinfachesRechnen::class.java).apply {
-            putExtra(Konstanten.RECHENART, tag.toString())
+        if (tag.equals(Konstanten.ADD) || tag.equals(Konstanten.SUB)) {
+            val intent = Intent(this, EinfachesRechnen::class.java).apply {
+                putExtra(Konstanten.RECHENART, tag.toString())
+            }
+            startActivity(intent)
+        } else if (tag.equals(Konstanten.ADDERG) || tag.equals(Konstanten.SUBERG)) {
+            val intent = Intent(this, EinfachesRechnenMitEingabe::class.java).apply {
+                putExtra(Konstanten.RECHENART, tag.toString())
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
 
     }
 }

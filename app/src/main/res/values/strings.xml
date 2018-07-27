@@ -7,4 +7,8 @@
     <string name="versuche">Versuche</string>
     <string name="waehle">Wähle eine Aufgabenart</string>
     <string name="subtrahieren">subtrahieren</string>
+    <string name="ErgebnisEingeben">Ergebnis:</string>
+    <string name="adderg">addieren plus</string>
+    <string name="loesung">lösen</string>
+    <string name="suberg">Substrahieren Plus</string>
 </resources>
