@@ -87,7 +87,7 @@ class EinfachesRechnen : AppCompatActivity() {
         var i = 0
         for (ele in aktAufgabe!!.loesungen) {
             buttons[i].setBackgroundColor(Color.LTGRAY)
-            buttons[i].text = Integer.toString(ele!!)
+            buttons[i].text = String.format(Locale.GERMAN, Integer.toString(ele!!))
             i++
         }
     }
