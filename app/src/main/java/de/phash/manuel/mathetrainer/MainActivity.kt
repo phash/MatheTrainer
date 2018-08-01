@@ -30,12 +30,15 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(input: Editable?) {
                 Log.i("textchange", "after Text Changed: " + input.toString())
-                val inp = Integer.parseInt(input.toString())
+                if (input.toString().isNotBlank()) {
+
+                    val inp = Integer.parseInt(input.toString())
 
                     Log.i("textchange", "write to prefs")
                     sharedPref.edit().putInt("bisMax", inp).apply()
                     Status.instance.bisMax = inp
-                // } else bisMax.setText(sharedPref.getInt("bisMax", 20))
+                    // } else bisMax.setText(sharedPref.getInt("bisMax", 20))
+                }
             }
 
         })

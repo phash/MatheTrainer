@@ -92,6 +92,7 @@
 
         <Button
             android:id="@+id/loesung1"
+            style="@android:style/Widget.Material.Light.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginLeft="24dp"
@@ -102,6 +103,7 @@
 
         <Button
             android:id="@+id/loesung2"
+            style="@android:style/Widget.Material.Light.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginLeft="24dp"
@@ -112,6 +114,7 @@
 
         <Button
             android:id="@+id/loesung3"
+            style="@android:style/Widget.Material.Light.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginLeft="24dp"
@@ -122,6 +125,7 @@
 
         <Button
             android:id="@+id/loesung4"
+            style="@android:style/Widget.Material.Light.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginLeft="24dp"
@@ -132,16 +136,4 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="hauptMenue"
-        android:text="@string/hauptMenue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
