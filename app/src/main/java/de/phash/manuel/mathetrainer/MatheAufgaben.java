@@ -1,8 +1,6 @@
 package de.phash.manuel.mathetrainer;
 
 
-import android.util.Log;
-
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.HashSet;
@@ -17,16 +15,13 @@ public class MatheAufgaben {
         Integer summand1;
         Integer summand2;
         do {
-
             summand1 = RandomUtils.nextInt(0, bisMax);
             summand2 = RandomUtils.nextInt(0, bisMax);
-
         } while (summand1 + summand2 >= bisMax);
         aufgabe.setRichtigeLoesung(summand1 + summand2);
         loesungsSet.add(summand1 + summand2);
         do {
             loesungsSet.add(RandomUtils.nextInt(0, bisMax));
-
         } while (loesungsSet.size() < loesungen);
         aufgabe.setAufgabe(String.format(Locale.GERMAN, "%d + %d", summand1, summand2));
         aufgabe.setLoesungen(loesungsSet);
@@ -41,10 +36,8 @@ public class MatheAufgaben {
         Integer minuend;
         Integer subtrahend;
         do {
-
             minuend = RandomUtils.nextInt(0, bisMax);
             subtrahend = RandomUtils.nextInt(0, bisMax);
-            Log.i("sub", "minuend: " + minuend + " subtrahend: " + subtrahend);
         } while (minuend + subtrahend >= bisMax || minuend < subtrahend);
         aufgabe.setRichtigeLoesung(minuend - subtrahend);
         if (loesungen > 1) {

@@ -58,7 +58,7 @@ class EinfachesRechnen : AppCompatActivity() {
         Status.instance.versuche++
         Status.instance.aufgabe++
         val sharedPref = this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE)
-        var richtigPers = sharedPref.getInt("richtieg", 0)
+        var richtigPers = sharedPref.getInt("richtig", 0)
         sharedPref.edit().putInt("richtige", richtigPers++).apply()
         var versuchPers = sharedPref.getInt("versuche", 0)
         sharedPref.edit().putInt("versuche", versuchPers++).apply()
