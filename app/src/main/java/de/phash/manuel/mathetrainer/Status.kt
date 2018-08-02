@@ -2,6 +2,19 @@ package de.phash.manuel.mathetrainer
 
 class Status private constructor() {
 
+
+    fun richtigAdd() {
+        richtig++
+    }
+
+    fun versucheAdd() {
+        versuche++
+    }
+
+    fun aufgabeAdd() {
+        aufgabe++
+    }
+
     init {
         println("This ($this) is a singleton")
     }
@@ -12,6 +25,12 @@ class Status private constructor() {
 
     companion object {
         val instance: Status by lazy { Holder.INSTANCE }
+        const val RICHTIGE = "richtige"
+        const val VERSUCHE = "versuche"
+        const val AUFGABEN = "aufgaben"
+        const val RICHTIGEALLTIME = "richtigeAllTime"
+        const val VERSUCHEALLTIME = "versucheAllTime"
+        const val AUFGABENALLTIME = "aufgabenAllTime"
     }
 
     internal var aufgabe: Int = 0

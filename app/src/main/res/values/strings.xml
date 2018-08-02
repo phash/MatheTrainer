@@ -13,4 +13,6 @@
     <string name="suberg">Substrahieren Plus</string>
     <string name="klasse">In welche Klasse gehst du?</string>
     <string name="biswieviel">Bis wieviel kannst du rechnen?</string>
+    <string name="reset">Zähler zurücksetzen</string>
+    <string name="allTime">Alle Aufgaben</string>
 </resources>

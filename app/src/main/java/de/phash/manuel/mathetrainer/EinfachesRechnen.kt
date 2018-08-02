@@ -43,10 +43,13 @@ class EinfachesRechnen : AppCompatActivity() {
         } else {
             val sharedPref = this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE)
 
-            var versuchPers = sharedPref.getInt("versuche", 0)
-            sharedPref.edit().putInt("versuche", versuchPers++).apply()
+            var versuchPers = sharedPref.getInt(Status.VERSUCHE, 0)
+            sharedPref.edit().putInt(Status.VERSUCHE, versuchPers++).apply()
             Status.instance.versuche++
+
+            sharedPref.edit().putInt(Status.VERSUCHEALLTIME, (sharedPref.getInt(Status.VERSUCHEALLTIME, 0) + 1)).apply()
             b.setBackgroundColor(Color.RED)
+            b.isEnabled = false
             updateVersuche()
             Toast.makeText(this, "leider falsch", Toast.LENGTH_SHORT).show()
 
@@ -54,17 +57,20 @@ class EinfachesRechnen : AppCompatActivity() {
     }
 
     private fun increaseAllStates() {
-        Status.instance.richtig++
-        Status.instance.versuche++
-        Status.instance.aufgabe++
+        Status.instance.richtigAdd()
+        Status.instance.versucheAdd()
+        Status.instance.aufgabeAdd()
         val sharedPref = this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE)
-        var richtigPers = sharedPref.getInt("richtig", 0)
-        sharedPref.edit().putInt("richtige", richtigPers++).apply()
-        var versuchPers = sharedPref.getInt("versuche", 0)
-        sharedPref.edit().putInt("versuche", versuchPers++).apply()
+        var richtigPers = sharedPref.getInt(Status.RICHTIGE, 0)
+        sharedPref.edit().putInt(Status.RICHTIGE, richtigPers).apply()
+        var versuchPers = sharedPref.getInt(Status.VERSUCHE, 0)
+        sharedPref.edit().putInt(Status.VERSUCHE, versuchPers).apply()
+        var aufgabePers = sharedPref.getInt(Status.AUFGABEN, 0)
+        sharedPref.edit().putInt(Status.AUFGABEN, aufgabePers).apply()
 
-        var aufgabePers = sharedPref.getInt("aufgaben", 0)
-        sharedPref.edit().putInt("aufgaben", aufgabePers++).apply()
+        sharedPref.edit().putInt(Status.AUFGABENALLTIME, (sharedPref.getInt(Status.AUFGABENALLTIME, 0) + 1)).apply()
+        sharedPref.edit().putInt(Status.VERSUCHEALLTIME, (sharedPref.getInt(Status.VERSUCHEALLTIME, 0) + 1)).apply()
+        sharedPref.edit().putInt(Status.RICHTIGEALLTIME, (sharedPref.getInt(Status.RICHTIGEALLTIME, 0) + 1)).apply()
 
     }
     private fun updateVersuche() {
@@ -87,6 +93,7 @@ class EinfachesRechnen : AppCompatActivity() {
         var i = 0
         for (ele in aktAufgabe!!.loesungen) {
             buttons[i].setBackgroundColor(Color.LTGRAY)
+            buttons[i].isEnabled = true
             buttons[i].text = String.format(Locale.GERMAN, Integer.toString(ele!!))
             i++
         }
