@@ -6,9 +6,16 @@
  */
 package de.phash.manuel.mathetrainer
 
-import android.content.SharedPreferences
+import android.app.Service
+import android.content.Context
+import android.content.Intent
+import android.os.IBinder
 
-class StatsUpdateService private constructor() {
+class StatsUpdateService : Service() {
+    override fun onBind(intent: Intent?): IBinder {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object {
         val instance: StatsUpdateService by lazy { StatsUpdateService.Holder.INSTANCE }
     }
@@ -21,7 +28,8 @@ class StatsUpdateService private constructor() {
         println("This ($this) is a singleton")
     }
 
-    fun increaseAllStates(sharedPref: SharedPreferences) {
+    fun increaseAllStates() {
+        var sharedPref = this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE)
         Status.instance.richtigAdd()
         Status.instance.versucheAdd()
         Status.instance.aufgabeAdd()

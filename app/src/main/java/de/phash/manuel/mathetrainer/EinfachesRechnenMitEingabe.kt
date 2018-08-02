@@ -72,7 +72,7 @@ class EinfachesRechnenMitEingabe : AppCompatActivity() {
 
 
     private fun increaseAllStates() {
-        StatsUpdateService.instance.increaseAllStates(this.getSharedPreferences("de.phash.manuel.mathetrainer", Context.MODE_PRIVATE))
+        StatsUpdateService.instance.increaseAllStates()
     }
 
     fun hauptMenue(view: View) {
